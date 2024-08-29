@@ -1,0 +1,7 @@
+# ninja log v5
+4	55	7466679266011224	CMakeFiles/TrustedInstallerElevation.dir/app.rc.res	8c5c898d9e2990e0
+2	82	7466679266278842	CMakeFiles/TrustedInstallerElevation.dir/main.cpp.obj.ddi	3117a5da3a81c916
+82	106	7466679266520143	CMakeFiles/TrustedInstallerElevation.dir/CXX.dd	d3c63de7c4719610
+82	106	7466679266520143	C:/Users/Cyril/CLionProjects/TrustedInstallerElevation/out/build/x64-Debug/CMakeFiles/TrustedInstallerElevation.dir/CXXModules.json	d3c63de7c4719610
+82	106	7466679266520143	CMakeFiles/TrustedInstallerElevation.dir/main.cpp.obj.modmap	d3c63de7c4719610
+109	466	7466679270108775	CMakeFiles/TrustedInstallerElevation.dir/main.cpp.obj	619d9127ddbc3d59

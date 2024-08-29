@@ -32,14 +32,14 @@ CONFIGURATION = Debug
 #############################################
 # Include rules file.
 
-include CMakeFiles/rules.ninja
+include CMakeFiles\rules.ninja
 
 # =============================================================================
 
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = C$:/Users/Cyril/CLionProjects/TrustedInstallerElevation/cmake-build-debug/
+cmake_ninja_workdir = C$:\Users\Cyril\CLionProjects\TrustedInstallerElevation\cmake-build-debug\
 # =============================================================================
 # Object build statements for EXECUTABLE target TrustedInstallerElevation
 
@@ -49,16 +49,23 @@ cmake_ninja_workdir = C$:/Users/Cyril/CLionProjects/TrustedInstallerElevation/cm
 
 build cmake_object_order_depends_target_TrustedInstallerElevation: phony || .
 
-build CMakeFiles/TrustedInstallerElevation.dir/main.cpp.obj: CXX_COMPILER__TrustedInstallerElevation_unscanned_Debug C$:/Users/Cyril/CLionProjects/TrustedInstallerElevation/main.cpp || cmake_object_order_depends_target_TrustedInstallerElevation
-  DEP_FILE = CMakeFiles\TrustedInstallerElevation.dir\main.cpp.obj.d
-  FLAGS = --static -g -std=gnu++20 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\TrustedInstallerElevation.dir
-  OBJECT_FILE_DIR = CMakeFiles\TrustedInstallerElevation.dir
+build CMakeFiles\TrustedInstallerElevation.dir\main.cpp.obj.ddi: CXX_SCAN__TrustedInstallerElevation_Debug C$:\Users\Cyril\CLionProjects\TrustedInstallerElevation\main.cpp || cmake_object_order_depends_target_TrustedInstallerElevation
+  DEP_FILE = CMakeFiles\TrustedInstallerElevation.dir\main.cpp.obj.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\TrustedInstallerElevation.dir\main.cpp.obj.ddi
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc --static /Ob0 /Od /RTC1 -std:c++20 -MDd -Zi
+  OBJ_FILE = CMakeFiles\TrustedInstallerElevation.dir\main.cpp.obj
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles\TrustedInstallerElevation.dir\main.cpp.obj.ddi.i
 
-build CMakeFiles/TrustedInstallerElevation.dir/app.rc.obj: RC_COMPILER__TrustedInstallerElevation_unscanned_Debug C$:/Users/Cyril/CLionProjects/TrustedInstallerElevation/app.rc || cmake_object_order_depends_target_TrustedInstallerElevation
-  DEP_FILE = CMakeFiles\TrustedInstallerElevation.dir\app.rc.obj.d
+build CMakeFiles\TrustedInstallerElevation.dir\main.cpp.obj: CXX_COMPILER__TrustedInstallerElevation_scanned_Debug C$:\Users\Cyril\CLionProjects\TrustedInstallerElevation\main.cpp | CMakeFiles\TrustedInstallerElevation.dir\main.cpp.obj.modmap || cmake_object_order_depends_target_TrustedInstallerElevation CMakeFiles\TrustedInstallerElevation.dir\CXX.dd
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles\TrustedInstallerElevation.dir\main.cpp.obj.modmap
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc --static /Ob0 /Od /RTC1 -std:c++20 -MDd -Zi
   OBJECT_DIR = CMakeFiles\TrustedInstallerElevation.dir
   OBJECT_FILE_DIR = CMakeFiles\TrustedInstallerElevation.dir
+  TARGET_COMPILE_PDB = CMakeFiles\TrustedInstallerElevation.dir\
+  TARGET_PDB = TrustedInstallerElevation.pdb
+  dyndep = CMakeFiles/TrustedInstallerElevation.dir/CXX.dd
+
+build CMakeFiles\TrustedInstallerElevation.dir\CXX.dd | C$:\Users\Cyril\CLionProjects\TrustedInstallerElevation\cmake-build-debug\CMakeFiles\TrustedInstallerElevation.dir\CXXModules.json CMakeFiles\TrustedInstallerElevation.dir\main.cpp.obj.modmap: CXX_DYNDEP__TrustedInstallerElevation_Debug CMakeFiles\TrustedInstallerElevation.dir\main.cpp.obj.ddi | C$:\Users\Cyril\CLionProjects\TrustedInstallerElevation\cmake-build-debug\CMakeFiles\TrustedInstallerElevation.dir\CXXDependInfo.json
 
 
 # =============================================================================
@@ -68,38 +75,40 @@ build CMakeFiles/TrustedInstallerElevation.dir/app.rc.obj: RC_COMPILER__TrustedI
 #############################################
 # Link the executable TrustedInstallerElevation.exe
 
-build TrustedInstallerElevation.exe: CXX_EXECUTABLE_LINKER__TrustedInstallerElevation_Debug CMakeFiles/TrustedInstallerElevation.dir/main.cpp.obj CMakeFiles/TrustedInstallerElevation.dir/app.rc.obj
-  FLAGS = --static -g
-  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+build TrustedInstallerElevation.exe: CXX_EXECUTABLE_LINKER__TrustedInstallerElevation_Debug CMakeFiles\TrustedInstallerElevation.dir\main.cpp.obj
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc --static /Ob0 /Od /RTC1 -MDd -Zi
+  LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console /MANIFEST /MANIFESTUAC:"level='requireAdministrator' uiAccess='false'"
+  LINK_LIBRARIES = kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
   OBJECT_DIR = CMakeFiles\TrustedInstallerElevation.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
+  TARGET_COMPILE_PDB = CMakeFiles\TrustedInstallerElevation.dir\
   TARGET_FILE = TrustedInstallerElevation.exe
-  TARGET_IMPLIB = libTrustedInstallerElevation.dll.a
-  TARGET_PDB = TrustedInstallerElevation.exe.dbg
+  TARGET_IMPLIB = TrustedInstallerElevation.lib
+  TARGET_PDB = TrustedInstallerElevation.pdb
 
 
 #############################################
 # Utility command for edit_cache
 
-build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+build CMakeFiles\edit_cache.util: CUSTOM_COMMAND
   COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\Cyril\CLionProjects\TrustedInstallerElevation\cmake-build-debug && C:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\bin\cmake.exe -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
-build edit_cache: phony CMakeFiles/edit_cache.util
+build edit_cache: phony CMakeFiles\edit_cache.util
 
 
 #############################################
 # Utility command for rebuild_cache
 
-build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+build CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
   COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\Cyril\CLionProjects\TrustedInstallerElevation\cmake-build-debug && C:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\bin\cmake.exe --regenerate-during-build -SC:\Users\Cyril\CLionProjects\TrustedInstallerElevation -BC:\Users\Cyril\CLionProjects\TrustedInstallerElevation\cmake-build-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
 
-build rebuild_cache: phony CMakeFiles/rebuild_cache.util
+build rebuild_cache: phony CMakeFiles\rebuild_cache.util
 
 # =============================================================================
 # Target aliases.
@@ -123,14 +132,14 @@ build all: phony TrustedInstallerElevation.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCInformation.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCXXInformation.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCommonLanguageInclude.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeGenericSystem.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeInitializeConfigs.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeLanguageInformation.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeRCInformation.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInformation.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInitialize.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU-C.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU-CXX.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-C.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-CXX.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-Initialize.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-windres.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/WindowsPaths.cmake C$:/Users/Cyril/CLionProjects/TrustedInstallerElevation/CMakeLists.txt CMakeCache.txt CMakeFiles/3.29.6/CMakeCCompiler.cmake CMakeFiles/3.29.6/CMakeCXXCompiler.cmake CMakeFiles/3.29.6/CMakeRCCompiler.cmake CMakeFiles/3.29.6/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\CMakeCInformation.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\CMakeCXXInformation.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\CMakeCommonLanguageInclude.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\CMakeGenericSystem.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\CMakeInitializeConfigs.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\CMakeLanguageInformation.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\CMakeRCInformation.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\CMakeSystemSpecificInformation.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\CMakeSystemSpecificInitialize.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\Compiler\MSVC-C.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\Compiler\MSVC-CXX.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\Compiler\MSVC.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\Platform\Windows-Initialize.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\Platform\Windows-MSVC-C.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\Platform\Windows-MSVC.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\Platform\Windows.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\Platform\WindowsPaths.cmake C$:\Users\Cyril\CLionProjects\TrustedInstallerElevation\CMakeLists.txt CMakeCache.txt CMakeFiles\3.29.6\CMakeCCompiler.cmake CMakeFiles\3.29.6\CMakeCXXCompiler.cmake CMakeFiles\3.29.6\CMakeRCCompiler.cmake CMakeFiles\3.29.6\CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCInformation.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCXXInformation.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCommonLanguageInclude.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeGenericSystem.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeInitializeConfigs.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeLanguageInformation.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeRCInformation.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInformation.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInitialize.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU-C.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU-CXX.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/GNU.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-C.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU-CXX.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-GNU.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-Initialize.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-windres.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows.cmake C$:/Users/Cyril/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/WindowsPaths.cmake C$:/Users/Cyril/CLionProjects/TrustedInstallerElevation/CMakeLists.txt CMakeCache.txt CMakeFiles/3.29.6/CMakeCCompiler.cmake CMakeFiles/3.29.6/CMakeCXXCompiler.cmake CMakeFiles/3.29.6/CMakeRCCompiler.cmake CMakeFiles/3.29.6/CMakeSystem.cmake: phony
+build C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\CMakeCInformation.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\CMakeCXXInformation.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\CMakeCommonLanguageInclude.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\CMakeGenericSystem.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\CMakeInitializeConfigs.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\CMakeLanguageInformation.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\CMakeRCInformation.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\CMakeSystemSpecificInformation.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\CMakeSystemSpecificInitialize.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\Compiler\MSVC-C.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\Compiler\MSVC-CXX.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\Compiler\MSVC.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\Platform\Windows-Initialize.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\Platform\Windows-MSVC-C.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\Platform\Windows-MSVC.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\Platform\Windows.cmake C$:\Users\Cyril\AppData\Local\Programs\CLion\bin\cmake\win\x64\share\cmake-3.29\Modules\Platform\WindowsPaths.cmake C$:\Users\Cyril\CLionProjects\TrustedInstallerElevation\CMakeLists.txt CMakeCache.txt CMakeFiles\3.29.6\CMakeCCompiler.cmake CMakeFiles\3.29.6\CMakeCXXCompiler.cmake CMakeFiles\3.29.6\CMakeRCCompiler.cmake CMakeFiles\3.29.6\CMakeSystem.cmake: phony
 
 
 #############################################

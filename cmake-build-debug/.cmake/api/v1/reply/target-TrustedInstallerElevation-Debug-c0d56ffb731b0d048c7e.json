@@ -38,7 +38,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /EHsc --static /Ob0 /Od /RTC1 -std:c++20 -MDd -Zi"
+					"fragment" : "/DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -std:c++20 -MDd -Zi"
 				}
 			],
 			"language" : "CXX",
@@ -62,7 +62,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "/DWIN32 /D_WINDOWS /EHsc --static /Ob0 /Od /RTC1 -MDd -Zi",
+				"fragment" : "/DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi",
 				"role" : "flags"
 			},
 			{

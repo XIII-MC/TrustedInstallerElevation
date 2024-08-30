@@ -1,13 +1,15 @@
 # ninja log v6
-35	108	7466682744338720	TrustedInstallerElevation.exe	da03b76e7ae04a02
+19	120	7466689171246961	TrustedInstallerElevation.exe	ae6dd61e28bbc9d
 111	571	7466681807328976	CMakeFiles/TrustedInstallerElevation.dir/main.cpp.obj	619d9127ddbc3d59
-1	16	7466682793970200	CMakeFiles/TrustedInstallerElevation.dir/main.cpp.obj.modmap	238ae0f657604206
-1	16	7466682793970200	C:/Users/Cyril/CLionProjects/TrustedInstallerElevation/cmake-build-debug/CMakeFiles/TrustedInstallerElevation.dir/CXXModules.json	238ae0f657604206
+1	15	7466689171066790	CMakeFiles/TrustedInstallerElevation.dir/main.cpp.obj.modmap	238ae0f657604206
+1	15	7466689171066790	C:/Users/Cyril/CLionProjects/TrustedInstallerElevation/cmake-build-debug/CMakeFiles/TrustedInstallerElevation.dir/CXXModules.json	238ae0f657604206
 7	60	7466681806287112	CMakeFiles/TrustedInstallerElevation.dir/app.rc.res	69ae3dcbcb4a0aca
 4	88	7466681806257122	CMakeFiles/TrustedInstallerElevation.dir/main.cpp.obj.ddi	3117a5da3a81c916
-1	16	7466682793970200	CMakeFiles/TrustedInstallerElevation.dir/CXX.dd	238ae0f657604206
-1	77	7466689134851900	build.ninja	1a04e07979110ff9
 1	15	7466689171066790	CMakeFiles/TrustedInstallerElevation.dir/CXX.dd	238ae0f657604206
-1	15	7466689171066790	C:/Users/Cyril/CLionProjects/TrustedInstallerElevation/cmake-build-debug/CMakeFiles/TrustedInstallerElevation.dir/CXXModules.json	238ae0f657604206
-1	15	7466689171066790	CMakeFiles/TrustedInstallerElevation.dir/main.cpp.obj.modmap	238ae0f657604206
-19	120	7466689171246961	TrustedInstallerElevation.exe	ae6dd61e28bbc9d
+1	77	7467150978479547	build.ninja	1a04e07979110ff9
+2	72	7467150995118925	CMakeFiles/TrustedInstallerElevation.dir/main.cpp.obj.ddi	a076ac0f2d939d4a
+73	95	7467150995829636	CMakeFiles/TrustedInstallerElevation.dir/CXX.dd	238ae0f657604206
+73	95	7467150995829636	C:/Users/Cyril/CLionProjects/TrustedInstallerElevation/cmake-build-debug/CMakeFiles/TrustedInstallerElevation.dir/CXXModules.json	238ae0f657604206
+73	95	7467150995829636	CMakeFiles/TrustedInstallerElevation.dir/main.cpp.obj.modmap	238ae0f657604206
+98	713	7467150996090507	CMakeFiles/TrustedInstallerElevation.dir/main.cpp.obj	58c59ef7194388b5
+713	795	7467151002241703	TrustedInstallerElevation.exe	ae6dd61e28bbc9d

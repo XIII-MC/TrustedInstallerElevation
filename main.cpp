@@ -1,8 +1,10 @@
+#include <filesystem>
 #include <iostream>
+#include <thread>
 #include <windows.h>
 #include <tlhelp32.h>
 
-void ToggleTrustedInstaller(const bool status) {
+void ToggleTrustedInstallerService(const bool status) {
 
     const SC_HANDLE hSCManager = OpenSCManager(nullptr, nullptr, SC_MANAGER_CONNECT);
     if (!hSCManager) {
@@ -13,10 +15,10 @@ void ToggleTrustedInstaller(const bool status) {
 
     }
 
-    const SC_HANDLE hService = OpenService(hSCManager, "TrustedInstaller.exe", (status == true ? SERVICE_START : SERVICE_STOP));
+    const SC_HANDLE hService = OpenService(hSCManager, "TrustedInstaller", (status == true ? SERVICE_START : SERVICE_STOP));
     if (!hService) {
 
-        std::cerr << "Failed to open TrustedInstaller" << std::endl;
+        std::cerr << "Failed to open service" << std::endl;
 
         CloseServiceHandle(hSCManager);
         return;
@@ -35,7 +37,7 @@ void ToggleTrustedInstaller(const bool status) {
 
 }
 
-DWORD GetTrustedInstallerPID() {
+DWORD GetTrustedInstallerProcessID() {
 
     const HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
     if (hSnapshot == INVALID_HANDLE_VALUE) return 0;
@@ -89,9 +91,9 @@ bool EnableDebugPrivilege() {
 
 }
 
-void ElevateSubProcess() {
+void CreateElevatedCMD() {
 
-    HANDLE hParent = OpenProcess(PROCESS_CREATE_PROCESS, FALSE, GetTrustedInstallerPID());
+    HANDLE hParent = OpenProcess(PROCESS_CREATE_PROCESS, FALSE, GetTrustedInstallerProcessID());
     if (!hParent) {
 
         std::cerr << "Failed to open TrustedInstaller. Error: " << GetLastError() << "\n";
@@ -142,11 +144,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
     EnableDebugPrivilege();
 
-    ToggleTrustedInstaller(false);
-    ToggleTrustedInstaller(true);
+    ToggleTrustedInstallerService(false);
+    ToggleTrustedInstallerService(true);
 
-    ElevateSubProcess();
+    CreateElevatedCMD();
 
     return 0;
-
 }

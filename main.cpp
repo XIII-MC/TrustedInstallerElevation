@@ -1,35 +1,152 @@
 #include <iostream>
-#include <fstream>
+#include <windows.h>
+#include <tlhelp32.h>
 
-int main() {
+void ToggleTrustedInstaller(const bool status) {
 
-    std::cout << "Please wait, this could take a while (if it's your first time running it on this machine)..." << std::endl;
+    const SC_HANDLE hSCManager = OpenSCManager(nullptr, nullptr, SC_MANAGER_CONNECT);
+    if (!hSCManager) {
 
-    std::ofstream file;
-    file.open("temp.ps1");
+        std::cerr << "Failed to connect to Service Control Manager" << std::endl;
 
-    std::string powershell;
-    powershell = "Set-ExecutionPolicy Bypass -Force\n";
-    powershell += "$nuGet = Get-PackageProvider | Where Name -match \"NuGet\"\n";
-    powershell += "if (!$nuGet) { Install-PackageProvider -Name NuGet -Force }\n";
-    powershell += "if (Get-Module -ListAvailable -Name NtObjectManager) {} else { Set-PSRepository PSGallery -InstallationPolicy Trusted; Install-Module -Name NtObjectManager -Confirm:$False -Force -RequiredVersion 1.1.32 }\n";
-    powershell += "Import-Module NtObjectManager\n";
-    powershell += "sc.exe stop TrustedInstaller\n";
-    powershell += "sc.exe start TrustedInstaller\n";
-    powershell += "$ti = Get-NtProcess TrustedInstaller.exe\n";
-    powershell += "New-Win32Process cmd.exe -CreationFlags NewConsole -ParentProcess $ti\n";
-    file << powershell << std::endl;
-    file.close();
+        return;
 
-    std::cout << "Running script..." << std::endl;
+    }
 
-    system("powershell.exe -ExecutionPolicy Bypass ./temp.ps1");
+    const SC_HANDLE hService = OpenService(hSCManager, "TrustedInstaller.exe", (status == true ? SERVICE_START : SERVICE_STOP));
+    if (!hService) {
 
-    std::cout << "Script ran!" << std::endl;
+        std::cerr << "Failed to open TrustedInstaller" << std::endl;
 
-    system("TIMEOUT /T 3");
+        CloseServiceHandle(hSCManager);
+        return;
 
-    remove("temp.ps1");
+    }
+
+    if (!StartService(hService, 0, nullptr)) {
+
+        if (const DWORD err = GetLastError(); err == ERROR_SERVICE_ALREADY_RUNNING) std::cout << "Service already running." << std::endl;
+        else std::cerr << "Failed to start service. Error code: " << err << std::endl;
+
+    } else std::cout << "Service started successfully." << std::endl;
+
+    CloseServiceHandle(hService);
+    CloseServiceHandle(hSCManager);
+
+}
+
+DWORD GetTrustedInstallerPID() {
+
+    const HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+    if (hSnapshot == INVALID_HANDLE_VALUE) return 0;
+
+    PROCESSENTRY32 pe;
+    pe.dwSize = sizeof(pe);
+
+    if (Process32First(hSnapshot, &pe)) {
+
+        do {
+
+            std::string exe(pe.szExeFile);
+            std::string exeName(exe.begin(), exe.end());
+
+            if (_stricmp(exeName.c_str(), "TrustedInstaller.exe") == 0) {
+
+                CloseHandle(hSnapshot);
+                return pe.th32ProcessID;
+
+            }
+
+        } while (Process32Next(hSnapshot, &pe));
+
+    }
+
+    CloseHandle(hSnapshot);
+    return 0;
+
+}
+
+bool EnableDebugPrivilege() {
+
+    HANDLE hToken;
+    TOKEN_PRIVILEGES tp;
+    if (!OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, &hToken)) return false;
+
+    if (!LookupPrivilegeValue(nullptr, SE_DEBUG_NAME, &tp.Privileges[0].Luid)) {
+
+        CloseHandle(hToken);
+
+        return false;
+
+    }
+
+    tp.PrivilegeCount = 1;
+    tp.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
+    AdjustTokenPrivileges(hToken, FALSE, &tp, sizeof(tp), nullptr, nullptr);
+    CloseHandle(hToken);
+
+    return GetLastError() == ERROR_SUCCESS;
+
+}
+
+void ElevateSubProcess() {
+
+    HANDLE hParent = OpenProcess(PROCESS_CREATE_PROCESS, FALSE, GetTrustedInstallerPID());
+    if (!hParent) {
+
+        std::cerr << "Failed to open TrustedInstaller. Error: " << GetLastError() << "\n";
+
+        return;
+
+    }
+
+    SIZE_T size = 0;
+    STARTUPINFOEXA siex = { 0 };
+    siex.StartupInfo.cb = sizeof(siex);
+
+    InitializeProcThreadAttributeList(nullptr, 1, 0, &size);
+    siex.lpAttributeList = static_cast<LPPROC_THREAD_ATTRIBUTE_LIST>(HeapAlloc(GetProcessHeap(), 0, size));
+    InitializeProcThreadAttributeList(siex.lpAttributeList, 1, 0, &size);
+
+    UpdateProcThreadAttribute(
+        siex.lpAttributeList, 0,
+        PROC_THREAD_ATTRIBUTE_PARENT_PROCESS,
+        &hParent, sizeof(HANDLE), nullptr, nullptr
+    );
+
+    PROCESS_INFORMATION pi = {};
+    const BOOL success = CreateProcessA(
+        nullptr,
+        const_cast<LPSTR>("cmd.exe"),
+        nullptr, nullptr, FALSE,
+        EXTENDED_STARTUPINFO_PRESENT | CREATE_NEW_CONSOLE,
+        nullptr, nullptr,
+        &siex.StartupInfo,
+        &pi
+    );
+
+    if (success) {
+
+        CloseHandle(pi.hProcess);
+        CloseHandle(pi.hThread);
+
+    }
+
+    DeleteProcThreadAttributeList(siex.lpAttributeList);
+    HeapFree(GetProcessHeap(), 0, siex.lpAttributeList);
+    CloseHandle(hParent);
+
+}
+
+int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
+
+    EnableDebugPrivilege();
+
+    ToggleTrustedInstaller(false);
+    ToggleTrustedInstaller(true);
+
+    ElevateSubProcess();
 
     return 0;
+
 }

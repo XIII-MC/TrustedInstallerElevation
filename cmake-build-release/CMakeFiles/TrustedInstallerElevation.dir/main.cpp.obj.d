@@ -362,3 +362,4 @@ C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/mcx.h
 C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/imm.h
 C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/ime_cmodes.h
 C:/Program Files (x86)/Windows Kits/10//include/10.0.22621.0//um/tlhelp32.h
+C:/Users/Cyril/CLionProjects/TrustedInstallerElevation/InputUtils.h

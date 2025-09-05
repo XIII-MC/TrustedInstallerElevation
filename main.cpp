@@ -4,6 +4,8 @@
 #include <windows.h>
 #include <tlhelp32.h>
 
+#include "InputUtils.h"
+
 void ToggleTrustedInstallerService(const bool status) {
 
     const SC_HANDLE hSCManager = OpenSCManager(nullptr, nullptr, SC_MANAGER_CONNECT);
@@ -37,7 +39,7 @@ void ToggleTrustedInstallerService(const bool status) {
 
 }
 
-DWORD GetTrustedInstallerProcessID() {
+DWORD GetProcessID(const std::string& processName) {
 
     const HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
     if (hSnapshot == INVALID_HANDLE_VALUE) return 0;
@@ -52,7 +54,7 @@ DWORD GetTrustedInstallerProcessID() {
             std::string exe(pe.szExeFile);
             std::string exeName(exe.begin(), exe.end());
 
-            if (_stricmp(exeName.c_str(), "TrustedInstaller.exe") == 0) {
+            if (_stricmp(exeName.c_str(), (processName + ".exe").c_str()) == 0) {
 
                 CloseHandle(hSnapshot);
                 return pe.th32ProcessID;
@@ -91,12 +93,12 @@ bool EnableDebugPrivilege() {
 
 }
 
-void CreateElevatedCMD() {
+void CreateElevatedCMD(const std::string& processName) {
 
-    HANDLE hParent = OpenProcess(PROCESS_CREATE_PROCESS, FALSE, GetTrustedInstallerProcessID());
+    HANDLE hParent = OpenProcess(PROCESS_CREATE_PROCESS, FALSE, GetProcessID(processName));
     if (!hParent) {
 
-        std::cerr << "Failed to open TrustedInstaller. Error: " << GetLastError() << "\n";
+        std::cerr << "Failed to open process. Error: " << GetLastError() << "\n";
 
         return;
 
@@ -140,14 +142,21 @@ void CreateElevatedCMD() {
 
 }
 
-int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
+int main() {
 
     EnableDebugPrivilege();
 
-    ToggleTrustedInstallerService(false);
-    ToggleTrustedInstallerService(true);
+    const std::string processName = InputUtils::getUserInput("Enter the process name to elevate as (no need to put '.exe')", "TrustedInstaller");
 
-    CreateElevatedCMD();
+    if (processName == "TrustedInstaller") {
+
+        ToggleTrustedInstallerService(false);
+        ToggleTrustedInstallerService(true);
+
+    }
+
+    CreateElevatedCMD(processName);
 
     return 0;
+
 }

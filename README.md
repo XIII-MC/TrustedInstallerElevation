@@ -5,7 +5,7 @@ This tool allows you to create a cmd shell that has TrustedInstaller (System) le
 
 ## Features & Functionalities
 
-- Create a shell with TrustedInstaller permissions
+- Create a shell with any process' permissions
 
 ## How does it work ?
 

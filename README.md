@@ -9,16 +9,16 @@ This tool allows you to create a cmd shell that has TrustedInstaller (System) le
 
 ## How does it work ?
 
-- Get TrustedInstaller's process
-- Create a shell under TrustedInstaller, therefore herit TrustedInstaller permissions
+- Get any process (or TrustedInstaller by default)
+- Create a shell under that process, therefore herit the process' permissions (grants you total access if using TrustedInstaller)
 
 ## Releases/Updates
 
-No release will be created, if you wish to download this tool please download the "TrustedInstallerElevation.exe" file from the "cmake-build-debug" folder.
+No release will be created, if you wish to download this tool please download the "TrustedInstallerElevation.exe" file from the "cmake-build-release" folder.
 
 ## Issues
 
-Issues and errors/bugs will only be trated if they are judged "critical" or "impactful". Most feature requests or enhancement will be ignored.
+Issues and errors/bugs will only be treated if they are judged "critical" or "impactful". Most feature requests or enhancement will be ignored.
 
 ## Contributing
 
